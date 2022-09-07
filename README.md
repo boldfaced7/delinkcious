@@ -21,9 +21,6 @@ Various utilities and one-time commands live here
 
 Stands for protobuf. Contains gRPC contracts and generated code.
 
-## fun
-
-Serverless functions (Nuclio)
 
 # Unit testing
 
