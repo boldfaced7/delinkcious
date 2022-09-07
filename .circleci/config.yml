@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: Update certificates
-          command: apt-get update --allow-releaseinfo-change && apt upgrade -y
+          command: sudo apt-get update --allow-releaseinfo-change && sudo apt upgrade -y
       - run:
           name: Get all dependencies
           command: go mod download all
