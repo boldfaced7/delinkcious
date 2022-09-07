@@ -1,0 +1,29 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: /home/circleci/go/src/github.com/boldfaced7/delinkcious
+    docker:
+      - image: cimg/go:1.17
+      - image: cimg/postgres:9.6-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+    steps:
+      - checkout
+      - run:
+          name: Update certificates
+          command: apt-get update --allow-releaseinfo-change && apt upgrade -y
+      - run:
+          name: Get all dependencies
+          command: go mod download all
+      - run:
+          name: Test everything
+          command: ginkgo -r -race -failFast -progress
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: build and push Docker images
+          shell: /bin/bash
+          command: |
+            chomd -x ./build.sh
+            ./build.sh
