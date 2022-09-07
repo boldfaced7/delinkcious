@@ -4,7 +4,7 @@ jobs:
     working_directory: /home/circleci/go/src/github.com/boldfaced7/delinkcious
     docker:
       - image: cimg/go:1.17
-      - image: cimg/postgres:9.6-alpine
+      - image: cimg/postgres:9.6
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
