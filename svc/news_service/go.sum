@@ -56,6 +56,8 @@ github.com/google/go-cmp v0.5.0/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/uuid v1.1.2/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
+github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/grpc-ecosystem/grpc-gateway v1.16.0/go.mod h1:BDjrQk3hbvj6Nolgz8mAMFbcEtjT1g+wF4CSlocrBnw=
 github.com/klauspost/compress v1.13.6 h1:P76CopJELS0TiO2mebmnzgWaajssP/EszplttgQxcgc=
 github.com/minio/highwayhash v1.0.2 h1:Aak5U0nElisjDCfPSG79Tgzkn2gl66NxOMspRrKnA/g=
@@ -79,8 +81,10 @@ github.com/spaolacci/murmur3 v0.0.0-20180118202830-f09979ecbc72/go.mod h1:JwIasO
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/the-gigi/delinkcious v0.0.0-20220103094143-701d7f6061e1 h1:V1q2i2jugcFDvEZSn+InZdHMGrkTk5tKS02T5Tz/EA0=
-github.com/the-gigi/delinkcious v0.0.0-20220103094143-701d7f6061e1/go.mod h1:kpqeByJZ8A+IXjeHd7LZhWJUvs8vMf/qNV1tzFAc7us=
+github.com/the-gigi/delinkcious v0.0.0-20220103100106-8f9203288534 h1:OS0IZAMPQsfq0vRYpBtx5UUwtTTBMarGMcqpMZP4OOE=
+github.com/the-gigi/delinkcious v0.0.0-20220103100106-8f9203288534/go.mod h1:kpqeByJZ8A+IXjeHd7LZhWJUvs8vMf/qNV1tzFAc7us=
+github.com/the-gigi/delinkcious/svc/news_service v0.0.0-20220103100106-8f9203288534 h1:VEAA4HrTsy0+Y910+uOxBhRRitTGB3VdbDMV2QUJjsg=
+github.com/the-gigi/delinkcious/svc/news_service v0.0.0-20220103100106-8f9203288534/go.mod h1:KKAm9X5y7AHhN6PxX5P+VYGKQKsO3SGaoPi/vAXqZ4s=
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
 go.opentelemetry.io/proto/otlp v0.7.0/go.mod h1:PqfVotwruBrMGOCsRd/89rSnXhoiJIqeYNgFYFoEGnI=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=

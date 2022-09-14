@@ -2,23 +2,20 @@ package service
 
 import (
 	"fmt"
-	"github.com/the-gigi/delinkcious/pb/news_service/pb"
+	httptransport "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
 	nm "github.com/the-gigi/delinkcious/pkg/news_manager"
-	"google.golang.org/grpc"
 	"log"
-	"net"
+	"net/http"
 	"os"
 )
 
 func Run() {
+	log.Println("Service started...")
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "6060"
-	}
-
-	listener, err := net.Listen("tcp", ":"+port)
-	if err != nil {
-		log.Fatal(err)
 	}
 
 	redisHostname := os.Getenv("NEWS_MANAGER_REDIS_SERVICE_HOST")
@@ -29,7 +26,7 @@ func Run() {
 		store = nm.NewInMemoryNewsStore()
 	} else {
 		address := fmt.Sprintf("%s:%s", redisHostname, redisPort)
-		store, err = nm.NewRedisNewsStore(address)
+		store, err := nm.NewRedisNewsStore(address)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -43,10 +40,15 @@ func Run() {
 		log.Fatal(err)
 	}
 
-	gRPCServer := grpc.NewServer()
-	pb.RegisterNewsServer(gRPCServer, newNewsServer(svc))
+	getNewsHandler := httptransport.NewServer(
+		makeGetNewsEndpoint(svc),
+		decodeGetNewsRequest,
+		encodeGetNewsResponse,
+	)
 
-	fmt.Printf("News service is listening on port %s...\n", port)
-	err = gRPCServer.Serve(listener)
-	fmt.Println("Serve() failed", err)
+	r := mux.NewRouter()
+	r.Methods("GET").Path("/news/{username}").Handler(getNewsHandler)
+
+	log.Printf("Listening on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, r))
 }
