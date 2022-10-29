@@ -24,14 +24,14 @@ spec:
         app: delinkcious
     spec:
       containers:
-        - name: api-gateway
-          image: boldfaced7/delinkcious-api-gateway:0.1
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 5000
-          envFrom:
-            - configMapRef:
-                name: api-gateway-config
+      - name: api-gateway
+        image: boldfaced7/delinkcious-api-gateway:0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: api-gateway-config
 ---
 apiVersion: v1
 kind: Service
@@ -40,8 +40,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port:  80
-      targetPort: 5000
+  - port:  80
+    targetPort: 5000
   selector:
     svc: api-gateway
     app: delinkcious

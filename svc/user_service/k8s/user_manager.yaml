@@ -18,21 +18,21 @@ spec:
         app: manager
     spec:
       containers:
-        - name: user-manager
-          image: boldfaced7/delinkcious-user:0.1
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 7070
-          envFrom:
-            - configMapRef:
-                name: user-manager-config
-          resources:
-            requests:
-              memory: 64Mi
-              cpu: 250m
-            limits:
-              memory: 64Mi
-              cpu: 250m
+      - name: user-manager
+        image: boldfaced7/delinkcious-user:0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7070
+        envFrom:
+        - configMapRef:
+            name: user-manager-config
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 250m
+          limits:
+            memory: 64Mi
+            cpu: 250m
 ---
 apiVersion: v1
 kind: Service
@@ -40,7 +40,7 @@ metadata:
   name: user-manager
 spec:
   ports:
-    - port: 7070
+  - port: 7070
   selector:
     svc: user
     app: manager

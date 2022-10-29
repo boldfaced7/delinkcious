@@ -16,23 +16,23 @@ spec:
         svc: news-manager
     spec:
       containers:
-        - name: redis-primary
-          image: redis:5.0.3-alpine
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 6379
-              name: redis
-          volumeMounts:
-            - name: news-manager-redis
-              mountPath: /data
+      - name: redis-primary
+        image: redis:5.0.3-alpine
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6379
+          name: redis
+        volumeMounts:
+        - name: news-manager-redis
+          mountPath: /data
   volumeClaimTemplates:
-    - metadata:
-        name: news-manager-redis
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        resources:
-          requests:
-            storage: 1Gi
+  - metadata:
+      name: news-manager-redis
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
@@ -47,5 +47,5 @@ spec:
     svc: news-manager
   clusterIP: None
   ports:
-    - port: 6379
-      name: redis
+  - port: 6379
+    name: redis

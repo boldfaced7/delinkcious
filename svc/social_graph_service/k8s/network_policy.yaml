@@ -9,14 +9,14 @@ spec:
       svc: social-graph
       app: db
   ingress:
-    - from:
-        - podSelector:
-            matchLabels:
-              svc: social-graph
-              app: manger
-      ports:
-        - protocol: TCP
-          port: 5432
+  - from:
+    - podSelector:
+        matchLabels:
+          svc: social-graph
+          app: manger
+    ports:
+    - protocol: TCP
+      port: 5432
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -29,11 +29,11 @@ spec:
       svc: social-graph
       app: manager
   ingress:
-    - from:
-        - podSelector:
-            matchLabels:
-              svc: link
-              app: manger
-      ports:
-        - protocol: TCP
-          port: 9090
+  - from:
+    - podSelector:
+        matchLabels:
+          svc: link
+          app: manger
+    ports:
+    - protocol: TCP
+      port: 9090

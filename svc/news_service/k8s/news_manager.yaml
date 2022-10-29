@@ -25,14 +25,14 @@ spec:
     spec:
       serviceAccount: news-manager
       containers:
-        - name: news-manager
-          image: boldfaced7/delinkcious-news:0.1
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 6060
-          envFrom:
-            - configMapRef:
-                name: news-manager-config
+      - name: news-manager
+        image: boldfaced7/delinkcious-news:0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6060
+        envFrom:
+        - configMapRef:
+            name: news-manager-config
 ---
 apiVersion: v1
 kind: Service
@@ -40,7 +40,7 @@ metadata:
   name: news-manager
 spec:
   ports:
-    - port:  6060
+  - port:  6060
   selector:
     svc: news
     app: manager

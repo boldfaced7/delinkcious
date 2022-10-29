@@ -18,25 +18,25 @@ spec:
         app: postgres
     spec:
       containers:
-        - name: postgres
-          image: postgres:11.1-alpine
-          ports:
-            - containerPort: 5432
-          env:
-            - name: POSTGRES_DB
-              value: link_manager
-            - name: POSTGRES_USER
-              value: postgres
-            - name: POSTGRES_PASSWORD
-              value: password
+      - name: postgres
+        image: postgres:11.1-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: link_manager
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: password
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata:
   name: link-db
 spec:
   ports:
-    - port: 5432
+  - port: 5432
   selector:
     svc: link
     app: postgres
