@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"os"
 )
 
 func Run() {
@@ -22,11 +23,19 @@ func Run() {
 			"http://localhost:5000/auth/callback/google",
 		)) // :5000
 
-	lmURL, err := url.Parse("http://localhost:8080") // :8080
+	lmHost := os.Getenv("LINK_MANAGER_SERVICE_HOST")
+	if lmHost == "" {
+		lmHost = "localhost"
+	}
+	smHost := os.Getenv("SOCIAL_GRAPH_MANAGER_SERVICE_HOST")
+	if smHost == "" {
+		smHost = "localhost"
+	}
+	lmURL, err := url.Parse("http://" + lmHost + ":8080") // :8080
 	if err != nil {
 		log.Fatal(err)
 	}
-	smURL, err := url.Parse("http://localhost:9090")
+	smURL, err := url.Parse("http://" + smHost + ":9090")
 	if err != nil {
 		log.Fatal(err)
 	}
