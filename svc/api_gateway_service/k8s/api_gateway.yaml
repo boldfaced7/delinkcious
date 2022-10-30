@@ -38,7 +38,7 @@ kind: Service
 metadata:
   name: api-gateway
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port:  80
     targetPort: 5000
