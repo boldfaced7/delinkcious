@@ -38,10 +38,11 @@ kind: Service
 metadata:
   name: api-gateway
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port:  80
     targetPort: 5000
+    nodePort: 30123
   selector:
     svc: api-gateway
     app: delinkcious
